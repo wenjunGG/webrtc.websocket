@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="webrtc.js"></script>
+    <script src="../vconsole.min.js"></script>
+    <style>
+        .clearfix::after {
+            clear: both;
+            content: '';
+            display: block;
+        }
+        
+        .msg {
+            width: 50%;
+            float: left;
+        }
+        
+        #sendmsg_content {
+            width: 80%;
+            height: 65px;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="localVideo" autoplay muted style="width:40%;"></video>
+    <video id="remoteVideo" autoplay style="width:40%;"></video>
+
+    <!--截图 -->
+    <canvas id="photo" style="display: none;"></canvas>
+    <br />
+    <input type="button" id="start" onclick="start(true)" value="Start Video"></input>
+    <input type="button" onclick="CreatesendData()" value="Createsend Message"></input>
+    <input type="button" onclick="RecievesendData()" value="Recievesend Message"></input>
+    <input type="button" onclick="snapAndSend()" value="snapAndSend"></input>
+    <hr>
+    <h2>收发消息</h2>
+    <div class="Message clearfix">
+        <div class="msg sendmsg">
+            <textarea id="sendmsg_content"></textarea>
+        </div>
+        <div class="msg" id="recievemsg">
+        </div>
+    </div>
+    <h2>接受图片</h2>
+    <div id="trail">
+
+    </div>
+    <script type="text/javascript">
+        // 初始化
+        var vConsole = new VConsole();
+        pageReady();
+    </script>
+</body>
+
+</html>
